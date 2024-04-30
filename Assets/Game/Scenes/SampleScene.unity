@@ -143,9 +143,10 @@ GameObject:
   m_Component:
   - component: {fileID: 54037449}
   - component: {fileID: 54037450}
+  - component: {fileID: 54037451}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +180,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!54 &54037451
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54037448}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &119884848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589749620793014258, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
@@ -737,8 +765,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 258339316}
     - target: {fileID: 3069519588476145448, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
+      propertyPath: playerRigidbody
+      value: 
+      objectReference: {fileID: 54037451}
+    - target: {fileID: 3069519588476145448, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
+      propertyPath: playerGameObject
+      value: 
+      objectReference: {fileID: 54037448}
+    - target: {fileID: 3069519588476145448, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
       propertyPath: destination.Array.size
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069519588476145448, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
+      propertyPath: destinations.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3069519588476145448, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
       propertyPath: destination.Array.data[0]
@@ -770,6 +810,22 @@ PrefabInstance:
       objectReference: {fileID: 1382144388}
     - target: {fileID: 3069519588476145448, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
       propertyPath: destination.Array.data[7]
+      value: 
+      objectReference: {fileID: 1707448447}
+    - target: {fileID: 3069519588476145448, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
+      propertyPath: destinations.Array.data[0]
+      value: 
+      objectReference: {fileID: 531383740}
+    - target: {fileID: 3069519588476145448, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
+      propertyPath: destinations.Array.data[1]
+      value: 
+      objectReference: {fileID: 46139421}
+    - target: {fileID: 3069519588476145448, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
+      propertyPath: destinations.Array.data[2]
+      value: 
+      objectReference: {fileID: 585572552}
+    - target: {fileID: 3069519588476145448, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
+      propertyPath: destinations.Array.data[3]
       value: 
       objectReference: {fileID: 1707448447}
     - target: {fileID: 3564482047531178658, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
@@ -1450,17 +1506,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2843987412802c4cbfca7db74f866c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 258339317}
-  destination:
-  - {fileID: 48367238}
-  - {fileID: 46139421}
-  - {fileID: 119884848}
-  - {fileID: 585572552}
-  - {fileID: 531383740}
-  - {fileID: 1928289464}
-  - {fileID: 1382144388}
-  - {fileID: 1707448447}
-  playerg: {fileID: 258339316}
+  player: {fileID: 0}
+  destinations: []
+  playerGameObject: {fileID: 0}
 --- !u!4 &1707448447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589749620793014258, guid: 25f6789216bc8a94087fba53cb327288, type: 3}
