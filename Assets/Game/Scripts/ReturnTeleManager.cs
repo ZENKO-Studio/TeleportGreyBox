@@ -4,24 +4,45 @@ using UnityEngine;
 
 public class ReturnTeleManager : MonoBehaviour
 {
-    public Transform player;
-    public GameObject playerGameObject; // Player game object
-    public bool isActive = true; // Teleport activation control
+    public Teleport teleport; // Reference to the Teleport script
+    private Vector3 originalPosition; // To store the original position
+    private bool hasTeleported = false; // To check if the player has teleported
 
-    // Teleport the player to a teleport with a specific tag
-    public void TeleportToTaggedPortal(string tag)
+    // Start is called before the first frame update
+    void Start()
     {
-        Teleport[] teleports = FindObjectsOfType<Teleport>();
-        foreach (var teleport in teleports)
+        if (teleport != null)
         {
-            if (teleport.tag == tag)
-            {
-                player.transform.position = teleport.transform.position;
-                playerGameObject.SetActive(false); // Disable player object temporarily
-                playerGameObject.SetActive(true); // Re-enable player object
-                return;
-            }
+            // Subscribe to the event
+            teleport.OnTeleport += HandleTeleport;
         }
-        Debug.Log("No teleport found with tag: " + tag);
+    }
+
+    private void HandleTeleport(Vector3 newPosition)
+    {
+        if (!hasTeleported)
+        {
+            originalPosition = newPosition; // Store the position from which the player teleported
+            hasTeleported = true;
+        }
+    }
+
+    // Method to teleport the player back to the original position
+    public void TeleportToOriginal()
+    {
+        if (hasTeleported)
+        {
+            teleport.player.transform.position = originalPosition;
+            hasTeleported = false; // Reset the teleportation flag
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (teleport != null)
+        {
+            // Unsubscribe to prevent memory leaks
+            teleport.OnTeleport -= HandleTeleport;
+        }
     }
 }
