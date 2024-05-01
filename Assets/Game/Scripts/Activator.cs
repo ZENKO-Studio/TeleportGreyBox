@@ -10,7 +10,15 @@ public class Activator : MonoBehaviour
     {
         if (other.CompareTag("Player")) // Check if the player enters the trigger zone
         {
-             // Call the method to activate the portal
+            teleportScript.ActivateTeleport(true); // Activate the portal when the player enters
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player")) // Check if the player exits the trigger zone
+        {
+            teleportScript.ActivateTeleport(false); // Deactivate the portal when the player exits
         }
     }
 }

@@ -8,6 +8,7 @@ public class FibDoor : MonoBehaviour
     private int secondLastFib = 0;  // Second last Fibonacci number
     private List<int> visitedDoors = new List<int>();  // List to keep track of visited door indices
     public Transform[] doors;  // Array of door transforms where the player can teleport to
+    public Transform player;  // Player transform
 
     private void Start()
     {
@@ -31,7 +32,7 @@ public class FibDoor : MonoBehaviour
         int doorIndex = nextFib % doors.Length;  // Calculate which door to teleport to
 
         Debug.Log("Teleport to Door: " + (doorIndex + 1));
-        transform.position = doors[doorIndex].position;  // Teleport player to the door's position
+        player.transform.position = doors[doorIndex].position;  // Teleport player to the door's position
         visitedDoors.Add(doorIndex);  // Save this door index
 
         // Update Fibonacci numbers
